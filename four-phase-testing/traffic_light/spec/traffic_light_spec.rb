@@ -12,4 +12,21 @@ describe TrafficLight do
 #teardown (you will probably not need this)
   end
 
+  it 'should have the state Red when instantiated' do
+    expect(subject.state).to eq(:red)
+  end
+
+  it 'changes the state from red to amber with #next' do
+    expect{subject.next}.to change{subject.state}.to eq(:amber)
+  end
+
+  it 'states should contain :red :amber :green' do
+    expect(subject.states).to match_array([:red,:amber,:green,:amber])
+  end
+
+  it 'should change state to the next expected state' do
+    subject.state = :red
+    expect(subject.next
+  end
+
 end
