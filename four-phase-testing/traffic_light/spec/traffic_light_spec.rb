@@ -23,10 +23,12 @@ describe TrafficLight do
   it 'states should contain :red :amber :green' do
     expect(subject.states).to match_array([:red,:amber,:green,:amber])
   end
-
-  it 'should change state to the next expected state' do
-    subject.state = :red
-    expect(subject.next
+  context 'when green' do
+    it 'should change state to the next expected state' do
+      subject.next # amber
+      subject.next # green
+      expect{subject.next}.to change{subject.state}.to eq(:amber)
+    end
   end
 
 end
